@@ -1,24 +1,31 @@
 package com.app.eBayAPI.config;
 
+import com.ebay.sdk.auth.oauth2.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import com.ebay.api.client.auth.oauth2.OAuth2Api;
 
 @Configuration
 public class EbayOAuthClientConfig {
 
-    private static final String CLIENT_ID = "Oleksand-Spring-SBX-1077ff297-bcbf4faa";
-    private static final String CLIENT_SECRET = "SBX-077ff297058a-f9df-4e1a-8203-f0e5";
-    private static final String NAME = "Oleksander";
+    @Value("$Oleksand-Spring-SBX-1077ff297-bcbf4faa")
+    private String clientId;
+
+    @Value("SBX-077ff297058a-f9df-4e1a-8203-f0e5")
+    private String clientSecret;
+
+    @Value("${ebay.oauth.ruName}")
+    private String Name;
 
     @Bean
-    public OAuth2Api ebayOAuth2ApiInterface() {
-        return new OAuth2ApiInterface();
+    public OAuth2Config ebayOAuth2Config() {
+        OAuth2Credential credential = new OAuth2Credential(clientId, clientSecret, Name);
+        return new OAuth2Config(credential);
     }
 
     @Bean
-    public OAuth2Api oauth2Api(OAuth2ApiInterface ebayOAuth2ApiInterface) {
-        OAuth2Credential credential = new OAuth2Credential(CLIENT_ID, CLIENT_SECRET, NAME);
-        return new OAuth2Api(credential, ebayOAuth2ApiInterface);
+    public OAuth2Api ebayOAuth2Api(OAuth2Config ebayOAuth2Config) {
+        return new OAuth2ApiImpl(ebayOAuth2Config);
     }
 }
+
