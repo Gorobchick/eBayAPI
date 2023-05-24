@@ -4,12 +4,12 @@ import com.ebay.sdk.auth.oauth2.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class EbayAuthService {
 
     private final OAuth2Api ebayOAuth2Api;
 
-    @Autowired
     public EbayAuthService(OAuth2Api ebayOAuth2Api) {
         this.ebayOAuth2Api = ebayOAuth2Api;
     }
