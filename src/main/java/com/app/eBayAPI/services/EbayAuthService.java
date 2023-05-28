@@ -1,8 +1,10 @@
 package com.app.eBayAPI.services;
 
-import com.ebay.sdk.auth.oauth2.model.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.ebay.api.client.auth.oauth2.OAuth2Api;
+//import com.ebay.sdk.auth.oauth2.model.*;
+
 
 
 @Service

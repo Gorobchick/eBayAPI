@@ -4,7 +4,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.ebay.sdk.auth.oauth2.*;
+import com.ebay.api.client.auth.oauth2.OAuth2Api;
+//import com.ebay.sdk.auth.oauth2.*;
 
 @Configuration
 public class EbayOAuthClientConfig {
@@ -16,11 +17,11 @@ public class EbayOAuthClientConfig {
     private String clientSecret;
 
     @Value("Oleksandr")
-    private String Name;
+    private String RuName;
 
     @Bean
-    public OAuth2Config ebayOAuth2Config() {
-        OAuth2Credential credential = new OAuth2Credential(clientId, clientSecret, Name);
+    public OAuth2Api ebayOAuth2Config() {
+        OAuth2Credential credential = new OAuth2Credential(clientId, clientSecret, RuName);
         return new OAuth2Config(credential);
     }
 

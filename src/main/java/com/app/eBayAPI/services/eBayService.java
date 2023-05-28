@@ -7,10 +7,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.app.eBayAPI.models.Item;
-//import com.ebay.api.client.auth.oauth2.OAuth2Api;
+import com.ebay.api.client.auth.oauth2.OAuth2Api;
 
 @Service
 public class eBayService {
+
+    OAuth2Api oauth2Api = new OAuth2Api();
 
     Item item = new Item(null, null, 0, 0) ;
 
