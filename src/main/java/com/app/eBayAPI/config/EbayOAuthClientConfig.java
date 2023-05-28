@@ -1,9 +1,10 @@
 package com.app.eBayAPI.config;
 
-import com.ebay.sdk.auth.oauth2.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import com.ebay.sdk.auth.oauth2.*;
 
 @Configuration
 public class EbayOAuthClientConfig {
@@ -14,7 +15,7 @@ public class EbayOAuthClientConfig {
     @Value("SBX-077ff297058a-f9df-4e1a-8203-f0e5")
     private String clientSecret;
 
-    @Value("${ebay.oauth.ruName}")
+    @Value("Oleksandr")
     private String Name;
 
     @Bean
