@@ -25,6 +25,6 @@ public class EbayAuthController {
         String accessToken = ebayAuthService.fetchToken(sessionId);
         // Використовуйте accessToken для взаємодії з API eBay
 
-        return "Token: " + accessToken;
+        return accessToken;
     }
 }
