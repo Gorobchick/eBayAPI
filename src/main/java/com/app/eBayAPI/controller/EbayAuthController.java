@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.eBayAPI.services.EbayAuthService;
 
+
 @RestController
 public class EbayAuthController {
 
@@ -13,6 +14,10 @@ public class EbayAuthController {
 
     public EbayAuthController(EbayAuthService ebayAuthService) {
         this.ebayAuthService = ebayAuthService;
+    }
+
+    public EbayAuthController(String Token){
+        Token = this.handleCallback();
     }
 
     @GetMapping("/ebay/authorize")
@@ -24,7 +29,7 @@ public class EbayAuthController {
     public String handleCallback(@RequestParam("sessionId") String sessionId) {
         String accessToken = ebayAuthService.fetchToken(sessionId);
         // Використовуйте accessToken для взаємодії з API eBay
-
-        return "Token: " + accessToken;
+        return accessToken;
     }
+
 }
