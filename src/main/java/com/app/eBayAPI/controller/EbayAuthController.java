@@ -11,8 +11,14 @@ public class EbayAuthController {
 
     private final EbayAuthService ebayAuthService;
 
+    String Token = this.handleCallback(getAuthorizationUrl());
+
     public EbayAuthController(EbayAuthService ebayAuthService) {
         this.ebayAuthService = ebayAuthService;
+    }
+
+    public EbayAuthController(String Token){
+        Token = this.Token;
     }
 
     @GetMapping("/ebay/authorize")
@@ -27,4 +33,6 @@ public class EbayAuthController {
 
         return accessToken;
     }
+
+    
 }
