@@ -17,9 +17,9 @@ public class EbayAuthController {
         this.ebayAuthService = ebayAuthService;
     }
 
-    public EbayAuthController(String Token){
-        Token = this.Token;
-    }
+    // public EbayAuthController(String Token){
+    //     Token = this.Token;
+    // }
 
     @GetMapping("/ebay/authorize")
     public String getAuthorizationUrl() {

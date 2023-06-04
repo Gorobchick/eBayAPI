@@ -6,7 +6,6 @@ import com.ebay.api.client.auth.oauth2.OAuth2Api;
 //import com.ebay.sdk.auth.oauth2.model.*;
 
 
-
 @Service
 public class EbayAuthService {
 
@@ -17,32 +16,16 @@ public class EbayAuthService {
     }
 
     public String getAuthorizationUrl() {
-        GetSessionIdRequest sessionIdRequest = new GetSessionIdRequest();
-        sessionIdRequest.setRuName(ebayOAuth2Api.getCredential().getRuName());
-
-        GetSessionIdResponse sessionIdResponse = ebayOAuth2Api.getSessionId(sessionIdRequest);
-
-        if (sessionIdResponse != null && sessionIdResponse.getErrors() == null) {
-            return ebayOAuth2Api.getAuthorizationUrl(sessionIdResponse.getSessionId());
-        }
-
-        // Обробка помилок
-
-        return null;
+        AuthorizationUrlRequest authorizationUrlRequest = new AuthorizationUrlRequest();
+        authorizationUrlRequest.setScopes(ebayOAuth2Api.getConfig().getScope().split(","));
+        return ebayOAuth2Api.generateAuthorizationUrl(authorizationUrlRequest);
     }
 
-    public String fetchToken(String sessionId) {
+    public String fetchToken(String code) {
         FetchTokenRequest fetchTokenRequest = new FetchTokenRequest();
-        fetchTokenRequest.setSessionId(sessionId);
-
+        fetchTokenRequest.setCode(code);
+        fetchTokenRequest.setGrantType(GrantType.AUTHORIZATION_CODE);
         FetchTokenResponse fetchTokenResponse = ebayOAuth2Api.fetchToken(fetchTokenRequest);
-
-        if (fetchTokenResponse != null && fetchTokenResponse.getErrors() == null) {
-            return fetchTokenResponse.getAccessToken();
-        }
-
-        // Обробка помилок
-
-        return null;
+        return fetchTokenResponse.getAccessToken();
     }
 }

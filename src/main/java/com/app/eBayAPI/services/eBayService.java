@@ -8,14 +8,14 @@ import org.springframework.web.client.RestTemplate;
 
 import com.app.eBayAPI.models.Item;
 import com.ebay.api.client.auth.oauth2.OAuth2Api;
-import com.app.eBayAPI.controller.EbayAuthController;
+//import com.app.eBayAPI.controller.EbayAuthController;
 
 @Service
 public class eBayService {
 
     String Token;
 
-    EbayAuthController ebayAuthController = new EbayAuthController(Token);
+    //EbayAuthController ebayAuthController = new EbayAuthController(Token);
 
     OAuth2Api oauth2Api = new OAuth2Api();
 
