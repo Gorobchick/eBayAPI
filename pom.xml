@@ -33,7 +33,7 @@
 		<dependency>
 			<groupId>com.ebay.auth</groupId>
 			<artifactId>ebay-oauth-java-client</artifactId>
-		<version>2.0.0</version>
+		<version>1.1.8</version>
 		</dependency>
 
 		<dependency>
