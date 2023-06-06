@@ -29,8 +29,8 @@ public class EbayOAuthConfig {
 
     @Bean
     public OAuth2Api ebayOAuth2Api() {
-        OAuth2Config oauth2Config = new OAuth2Config(clientId, clientSecret, redirectUri, scope, environment);
-        return new OAuth2ApiImpl(oauth2Config);
+        OAuth2Api oauth2Config = new OAuth2Api(clientId, clientSecret, redirectUri, scope, environment);
+        return new OAuth2Api(oauth2Config);
     }
 }
 
